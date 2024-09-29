@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import '../Sidebar.css';
 import { FiberManualRecord } from '@mui/icons-material';
 import { Create } from '@mui/icons-material';
@@ -13,8 +13,22 @@ import { FileCopy } from '@mui/icons-material';
 import { ExpandLess } from '@mui/icons-material';
 import { ExpandMore } from '@mui/icons-material';
 import { Add } from '@mui/icons-material';
+import db from '../firebase';
 
 function Sidebar() {
+  const [channels, setChannels] = useState([]);
+
+  useEffect(() => {
+    // run this code once when the sidebar component loads
+    db.collection('rooms').onSnapshot(snapshot => {
+      setChannels(
+        snapshot.docs.map(doc => ({
+          id: doc.id,
+          name : doc.data().name,
+        }))
+      )
+    })
+  }, []);
   return (
     <div className="sidebar">
         <div className="sidebar__header">
@@ -42,6 +56,11 @@ function Sidebar() {
 
         {/* Connect to database and list all the channels */}
         {/* <SidebarOption ..../> */}
+        {
+          channels.map(channel => (
+            <SidebarOption title = {channel.name} id = {channel.id} />
+          ))
+        }
     </div>
   )
 }
