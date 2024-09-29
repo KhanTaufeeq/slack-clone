@@ -12,6 +12,7 @@ import { Apps } from '@mui/icons-material';
 import { FileCopy } from '@mui/icons-material';
 import { ExpandLess } from '@mui/icons-material';
 import { ExpandMore } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 
 function Sidebar() {
   return (
@@ -36,6 +37,11 @@ function Sidebar() {
         <SidebarOption Icon = {ExpandLess} title = "Show less" />
         <hr />
         <SidebarOption Icon = {ExpandMore} title = "Channel" />
+        <hr />
+        <SidebarOption Icon = {Add} title = "Add Channel" />
+
+        {/* Connect to database and list all the channels */}
+        {/* <SidebarOption ..../> */}
     </div>
   )
 }
