@@ -52,7 +52,7 @@ function Sidebar() {
         <hr />
         <SidebarOption Icon = {ExpandMore} title = "Channel" />
         <hr />
-        <SidebarOption Icon = {Add} title = "Add Channel" />
+        <SidebarOption Icon = {Add} title = "Add Channel" addChannelOption />
 
         {/* Connect to database and list all the channels */}
         {/* <SidebarOption ..../> */}

@@ -40,4 +40,9 @@
 body {
   --slack-color: #4a154b;
   margin: 0;
+  overflow: hidden;
+}
+.app__body{
+  display: flex;
+  height: 100vh;
 }

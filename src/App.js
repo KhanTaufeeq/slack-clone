@@ -1,20 +1,28 @@
-import './App.css';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
+import "./App.css";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Chat from "./components/Chat";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      {/* <h1>Slack Clone</h1> */}
-      {/* Header  */}
-      <Header/>
-      <div className='app__body'>
-        {/* sidebar  */}
-        <Sidebar/>
-        {/* chat screen  */}
-      </div>
+      <Router>
+        <Header />
+        <div className="app__body">
+          <Sidebar />
+          <Routes>
+            <Route path = "/" element={<h1>Welcome</h1>}/>
+            <Route path = "/room/:roomId" element={<Chat/>}/>
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }
 
 export default App;
+
+// The colon (:) before roomId in the path="/room/:roomId" indicates a URL parameter. 
+// It is used to define a dynamic segment of the URL, meaning that roomId can take on any value,
+// and the component will render depending on the actual value provided in the URL.
