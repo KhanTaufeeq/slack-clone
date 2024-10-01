@@ -4,16 +4,18 @@ import { Avatar } from "@mui/material";
 import { AccessTime } from "@mui/icons-material";
 import { Search } from "@mui/icons-material";
 import { HelpOutline } from "@mui/icons-material";
+import { useStateValue } from "./StateProvider";
 
 function Header() {
+  const [{user}] = useStateValue();
   return (
     <div className="header">
       <div className="header__left">
         {/* Avatars for logged in user */}
         <Avatar
           className="header__avatar"
-          alt= 'Taufeeq'
-          src= ''
+          alt= {user?.displayName}
+          src= {user?.photoURL}
         />
         {/* Time icon  */}
         <AccessTime/>
